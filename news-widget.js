@@ -8,12 +8,15 @@ xhr.onreadystatechange = function() {
     if (xhr.readyState === 4) {
         if (xhr.status === 200) {
             console.log('Raw response:', xhr.responseText);  // Log the raw response
-            try {
-                var response = JSON.parse(xhr.responseText);
-                // Process the response and display the news
-                displayNews(response);
-            } catch (e) {
-                console.error('Error parsing JSON response:', e);
+            if (xhr.responseText.trim()) {
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    displayNews(response);
+                } catch (e) {
+                    console.error('Error parsing JSON response:', e);
+                }
+            } else {
+                console.error('Empty response received.');
             }
         } else {
             console.error('Error fetching the news:', xhr.status, xhr.statusText);
@@ -22,3 +25,8 @@ xhr.onreadystatechange = function() {
 };
 
 xhr.send();
+
+function displayNews(newsData) {
+    // Implement your logic to display the news data on the webpage
+    console.log('News Data:', newsData);
+}
