@@ -16,7 +16,7 @@ xhr.onreadystatechange = function() {
                 console.error('Error parsing JSON response:', e);
             }
         } else {
-            console.error('Error fetching data:', xhr.status, xhr.statusText);
+            console.error('Error fetching the news:', xhr.status, xhr.statusText);
         }
     }
 };
@@ -24,16 +24,6 @@ xhr.onreadystatechange = function() {
 xhr.send();
 
 function displayNews(newsData) {
-    // Implement your logic to display the news
-    var newsContainer = document.getElementById('news-container');
-    newsData.articles.forEach(function(article) {
-        var articleElement = document.createElement('div');
-        articleElement.className = 'article';
-        articleElement.innerHTML = `
-            <h2>${article.title}</h2>
-            <p>${article.description}</p>
-            <a href="${article.url}" target="_blank">Read more</a>
-        `;
-        newsContainer.appendChild(articleElement);
-    });
+    // Implement your logic to display the news data on the webpage
+    console.log('News Data:', newsData);
 }
