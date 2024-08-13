@@ -7,8 +7,8 @@ xhr.open('GET', apiUrl, true);
 xhr.onreadystatechange = function() {
     if (xhr.readyState === 4) {
         if (xhr.status === 200) {
+            console.log('Raw response:', xhr.responseText);  // Log the raw response
             try {
-                console.log('Raw response:', xhr.responseText);  // Log the raw response
                 var response = JSON.parse(xhr.responseText);
                 // Process the response and display the news
                 displayNews(response);
@@ -22,8 +22,3 @@ xhr.onreadystatechange = function() {
 };
 
 xhr.send();
-
-function displayNews(newsData) {
-    // Implement your logic to display the news data on the webpage
-    console.log('News Data:', newsData);
-}
